@@ -66,7 +66,7 @@ public class Lambda02 {
     public static void maxElBul(List<Integer> sayi){
         Optional <Integer> maxSayi= sayi.
                 stream().
-                reduce(Math::max);//eger benim resultim tek bir deger ise o zaman reduse terminal opr kullanilir
+                reduce(Math::max); //eger benim resultim tek bir deger ise o zaman reduse terminal opr kullanilir
         System.out.println(maxSayi);
     }
     //Structured yapi ile cozelim
