@@ -6,15 +6,18 @@ import java.util.Optional;
 public class Tekrar01 {
     public static void main(String[] args) {
         List<Integer> sayi = new ArrayList<>(Arrays.asList(34, 22, 16, 11, 35, 20, 63, 21, 65, 44, 66, 64, 81, 38, 15));
-        printListStructural(sayi);
-        printListFunctional2(sayi);
-        printListFunctional3(sayi);
-        printListFunctional4(sayi);
-        printListFunctional5(sayi);
-        printListFunctional6(sayi);
-        printListFunctional7(sayi);
-        printListFunctional8(sayi);
-        printListFunctional9(sayi);
+        //tek tek eleman eklemek yerine aslist yaptik. fakat bu sekilde eleman ekleme cikarma yapamam
+
+//        printListStructural(sayi);
+//        printListFunctional2(sayi);
+//        printListFunctional3(sayi);
+//        printListFunctional4(sayi);
+//        printListFunctional5(sayi);
+//        printListFunctional6(sayi);
+//        printListFunctional7(sayi);
+//        printListFunctional8(sayi);
+//        printListFunctional9(sayi);
+        elemanlariCarp(sayi);
     }
     public static void printListStructural(List<Integer>list){
         for (Integer w:list){
@@ -25,7 +28,7 @@ public class Tekrar01 {
         list.stream().forEach(t-> System.out.print(t+" "));
     }
     public static void print(int i){
-        System.out.println(i+" ");
+        System.out.print(i+" ");
     }
     public static void printListFunctional2(List<Integer>list){
         list.stream().filter(t->t%2==0).forEach(Tekrar01::print);
@@ -56,7 +59,11 @@ public class Tekrar01 {
     // Task-1 : Functional Programming ile listin cift elemanlarinin  karelerini
     // ayni satirda aralarina bosluk bırakarak print ediniz
     public static void printListFunctional6(List<Integer>list){
-        list.stream().filter(Tekrar01::ciftBul).map(t->t*t).forEach(Tekrar01::print);
+        list.
+                stream().
+                filter(Tekrar01::ciftBul).
+                map(t->t*t).
+                forEach(Tekrar01::print);
     }
 
     // Task 2: Functional Programming ile listin tek elemanlarinin  kuplerinin bir fazlasini
@@ -86,5 +93,17 @@ public class Tekrar01 {
                 map(t -> t * t).
                 reduce(Math::max));
     }
+    // List'teki tum elemanlarin toplamini yazdiriniz
+    public static void elemanlariTopla(List<Integer>list){
+        int toplam= list.
+                stream().
+                //reduce(Integer::sum)
+        reduce(0,(x,y)->x+y);
+        System.out.println(toplam);
+    }
+    //Task-7: List teki cift elemanlarin carpimini yazdiriniz
 
+    public static void elemanlariCarp(List<Integer>list){
+        System.out.println(list.stream().filter(Tekrar01::ciftBul).reduce(Math::multiplyExact));
+    }
 }
